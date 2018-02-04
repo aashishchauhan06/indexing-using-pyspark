@@ -5,14 +5,11 @@ if __name__ == "__main__":
 	conf = SparkConf().setAppName("ESTest")
 	sc = SparkContext(conf=conf)
 	
-	ES_COORDINATOR = "10.46.33.102"
+	ES_COORDINATOR = "localhost" #in my case some ip
 	ES_PORT = "9200"
-	INDEX_NAME = "multiomics_dbsnp"
-	INDEX_TYPE = "dbsnp"
-	#INDEX_NAME = "multiomics_clinvar"
-	#INDEX_TYPE = "clinvar"
-	#HDFS_FILEPATH = "hdfs://ptd025080.persistent.co.in:8020/home/dataSource/clinvar/devclinvar.vcf"
-	HDFS_FILEPATH = "hdfs://ptd025080.persistent.co.in:8020/home/dataSource/dbsnp/All_20170710.vcf"
+	INDEX_NAME = "test_indexname"
+	INDEX_TYPE = "indextype"
+	HDFS_FILEPATH = "hdfs://localhost:8020/home/dataSource/filename.vcf"
 	
 	es = Elasticsearch(hosts = [ES_COORDINATOR])
 	es_write_conf = {"es.nodes" : ES_COORDINATOR,"es.port" : ES_PORT,"es.resource" : INDEX_NAME + "/" + INDEX_TYPE}
